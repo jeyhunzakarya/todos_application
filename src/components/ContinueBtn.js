@@ -9,11 +9,11 @@ function ContinueBtn() {
     })
     const navigate = useNavigate();
     const onClickHandler=()=>{
-        navigate(`/${selectedUsr.name}`)
+        navigate(`/${selectedUsr?.name}`)
     }
-    
+    const selectedUserExists = !!selectedUsr
     return (
-        <button className="continue-button" onClick={onClickHandler}>Continue</button>
+        <button type='button' disabled={!selectedUserExists} className={`continue-button ${selectedUserExists?"":" disabled"}`}  onClick={onClickHandler}>Continue</button>
     )
 }
 

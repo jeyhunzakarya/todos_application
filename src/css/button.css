@@ -5,9 +5,12 @@
   padding: 10px 60px;
   border-radius: 5px;
   margin: 10px 0px;
-  cursor: pointer;
+  cursor:auto;
 }
-
+.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
 .user-button{
     height : 49px;
     width : 100px;

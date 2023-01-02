@@ -10,12 +10,15 @@ const UsernamesDropdown = () => {
 	const users = useSelector((state)=>{
 		return state.users
 	})
+	const selectedUsr = useSelector((state)=>{
+        return state.selectedUser
+    })
 	const dispatch = useDispatch();
 	const onUserClick = (e)=>{
-		const selectedUsr = users.find(user=>user.id == e.value)
+		const newSelectedUsr = users.find(user=>user.id == e.value)
 		dispatch(
 			selectUser({
-				user: selectedUsr
+				user: newSelectedUsr
 			})
 		);
 	}
@@ -29,7 +32,7 @@ const UsernamesDropdown = () => {
 		});
 	});
 	usersDropdown.reverse()
-	return 	<Dropdown options={usersDropdown} onChange = {onUserClick} placeholder="Select user" />;
+	return 	<Dropdown options={usersDropdown} onChange = {onUserClick} placeholder={selectedUsr?selectedUsr.name: "Select user"} />;
 };
 
 export default UsernamesDropdown;
