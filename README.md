@@ -14,7 +14,7 @@ after cloning the repository, run "npm install", then run "npm start".
 
 Project structure : 
 
-The main code is written in src folder, which has App.js and index.js (for initial view of the website), and 3 subdirectories : 
+The main code is written in src folder, which has index.js (for initial view of the website), and 3 subdirectories : 
 
 "components" subfolder for react components
 
@@ -26,3 +26,5 @@ The main code is written in src folder, which has App.js and index.js (for initi
 Page composition : whenever a component is updated, only that component is re-rendered, and the rest of the page is not rendered. (e.g. modifying a todo list of some 
 
 user only re-render the list itself, while other components, like button for creating new todo item is not re-rendered).
+
+There are currently some warning messages in the console, which I was not able to solve due to time constraints. I will try solving them in the upcoming time.
