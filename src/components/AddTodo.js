@@ -6,12 +6,12 @@ import { useSelector } from 'react-redux';
 import "../css/button.css";
 
 function AddTodo ()  {
-	let id  = useParams().id;
+	let userName  = useParams().userName;
 	const [title, setTitle] = useState('');
 	const [innerTxt, setInnerTxt] = useState('');
 	const dispatch = useDispatch();
 	const currUser = useSelector((state)=>{
-		return state.users.find(user=>user.id==id);
+		return state.users.find(user=>user.name==userName);
 	});
 	const onSubmit = (event) => {
 		event.preventDefault();

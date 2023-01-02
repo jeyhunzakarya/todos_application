@@ -9,7 +9,7 @@ function ContinueBtn() {
     })
     const navigate = useNavigate();
     const onClickHandler=()=>{
-        navigate(`/${selectedUsr.id}`)
+        navigate(`/${selectedUsr.name}`)
     }
     
     return (

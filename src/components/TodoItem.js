@@ -1,16 +1,16 @@
 import React,{useState} from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import {useParams } from "react-router-dom";
+import {useNavigate, useParams } from "react-router-dom";
 import {deleteTodo, toggleVisibility} from "../redux/usersSlice"
 import TodoCard from './TodoCard';
 import "../css/button.css";
 
 function TodoItem ({ todo }){
-	let id  = useParams().id;
-	const [isPrivate, setIsPrivate] = useState(true)
+	const navigate = useNavigate()
+	let userName  = useParams().userName;
 	const dispatch = useDispatch();
 	const currUser = useSelector((state)=>{
-		return state.users.find(user=>user.id==id);
+		return state.users.find(user=>user.name==userName);
 	});
 	const onDeleteClick = ()=>{
 		dispatch(
@@ -25,22 +25,21 @@ function TodoItem ({ todo }){
 	}
 
 	const onToggleClick = ()=>{
-		// dispatch(
-		// 	toggleVisibility({
-		// 		user:currUser,
-		// 		todo
-		// 	})
-		// );
-		setIsPrivate(!isPrivate)
+		dispatch(
+			toggleVisibility({
+				user:currUser,
+				todo
+			})
+		);
 	}
 
 	return (
-		<>
-			<TodoCard todo={todo} isPrivate={isPrivate}/>
+		<div>
+			<TodoCard todo={todo} currUser={currUser}/>
 			<button className="delete-button"  onClick={onDeleteClick}> delete </button>
 			<button className="general-button" onClick={onCopyClick} >copy link</button>
 			<button className="general-button" onClick = {onToggleClick}>toggle visibility</button>
-		</>
+		</div>
 	);
 };
 

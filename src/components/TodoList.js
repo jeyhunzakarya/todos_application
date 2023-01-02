@@ -4,15 +4,15 @@ import { useSelector } from "react-redux";
 import {useParams } from "react-router-dom";
 
 const TodoList = () => {
-	let id  = useParams().id;
+	let userName  = useParams().userName;
 	let todos = useSelector((state)=>{
-		return (state.users.find(user=>user.id==id).todos);
+		return (state.users.find(user=>user.name==userName).todos);
 	});
 	todos = [...todos].reverse()
 	return (
 		<ul className="tasks-list">
-			{todos.map((todo, index) => (
-				<TodoItem key={index} todo={todo}  />
+			{todos.map((todo) => (
+				<TodoItem key={todo.id} todo={todo}  />
 			))}
 		</ul>	
 	);

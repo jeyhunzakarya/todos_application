@@ -4,19 +4,29 @@ import CardContent from "@material-ui/core/CardContent";
 import CardHeader from '@material-ui/core/CardHeader'
 import Typography from "@material-ui/core/Typography";
 import { useNavigate} from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
-function TodoCard({todo, currUser}) {
-  const navigate = useNavigate()
+function SingleCardView() {
+    const userName = useParams().userName;
+    const todoId = useParams().todoId
+    const todos = useSelector((state)=>{
+		return state.users.find(user=>user.name==userName).todos;
+	});
+    const todo = todos.find(todoElem=>todoElem.id == todoId)
+    if (todo.isPrivate) { 
+        return <h2>todo not found</h2>
+    }
+    else 
     return (
     <Card
-		onDoubleClick={()=>navigate(`/${currUser.name}/${todo.id}`)}
         style={{
         width: 400,
         backgroundColor: "white",
         marginTop: 20,
         }}
     >
-
+    
         <CardHeader
             component={Typography}
             title={todo.isPrivate? "title hidden" : todo.title}
@@ -31,4 +41,4 @@ function TodoCard({todo, currUser}) {
   )
 }
 
-export default TodoCard
+export default SingleCardView
