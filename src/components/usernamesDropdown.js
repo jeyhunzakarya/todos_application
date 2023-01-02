@@ -28,6 +28,7 @@ const UsernamesDropdown = () => {
 			}
 		});
 	});
+	usersDropdown.reverse()
 	return 	<Dropdown options={usersDropdown} onChange = {onUserClick} placeholder="Select user" />;
 };
 

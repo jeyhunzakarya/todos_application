@@ -5,9 +5,10 @@ import {useParams } from "react-router-dom";
 
 const TodoList = () => {
 	let id  = useParams().id;
-	const todos = useSelector((state)=>{
-		return state.users.find(user=>user.id==id).todos;
+	let todos = useSelector((state)=>{
+		return (state.users.find(user=>user.id==id).todos);
 	});
+	todos = [...todos].reverse()
 	return (
 		<ul className="tasks-list">
 			{todos.map((todo, index) => (

@@ -4,7 +4,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardHeader from '@material-ui/core/CardHeader'
 import Typography from "@material-ui/core/Typography";
 
-function TodoCard({todo}) {
+function TodoCard({todo, isPrivate}) {
   return (
     <Card
         style={{
@@ -16,12 +16,12 @@ function TodoCard({todo}) {
 
         <CardHeader
             component={Typography}
-            title={todo.isPrivate? "title hidden" : todo.title}
+            title={isPrivate? "title hidden" : todo.title}
         />
 
         <CardContent>
             <Typography variant="body2" component="p">
-                {todo.isPrivate? "content hidden": todo.txt}	
+                {isPrivate? "content hidden": todo.txt}	
             </Typography>
         </CardContent>
     </Card>

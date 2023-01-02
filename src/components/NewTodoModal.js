@@ -19,7 +19,7 @@ function NewTodoModal() {
     const [modalOpen, setModalOpen] = useState(false);
     return (
         <div>
-          <button class="todo-button" onClick={setModalOpen}>new todo</button>
+          <button className="todo-button" onClick={setModalOpen}>new todo</button>
           <Modal
             isOpen={modalOpen}
             onRequestClose={() => setModalOpen(false)}
@@ -27,7 +27,7 @@ function NewTodoModal() {
             ariaHideApp={false}
           >
             <AddTodo/>
-            <button class = "modal-button" onClick={() => setModalOpen(false)}>Close Modal</button>
+            <button className = "modal-button" onClick={() => setModalOpen(false)}>Close Modal</button>
           </Modal>
         </div>
       );

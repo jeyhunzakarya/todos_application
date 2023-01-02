@@ -4,13 +4,13 @@ let counter = 1
 
 export const usersSlice = createSlice({
     name: "users",
-    initialState:[{id:0, name:"who", todos:["123", "456"]}],
+    initialState:[],
     reducers:{
         addUser: (state, action)=>{
             const newUser = {
                 id: counter++,
                 name: action.payload.user,
-                todos: [{title : "todo1", txt : "aaaaa", isPrivate : false}, {title:"doto2", txt : "bbbbbb", isPrivate:false}]
+                todos: []
             }
             return  [...state, newUser]
         },

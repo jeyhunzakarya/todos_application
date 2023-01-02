@@ -29,7 +29,7 @@ function AddTodo ()  {
 					title,
 					txt:innerTxt,
 					id:currUser.todos.length+1,
-					isPrivate:false
+					isPrivate:true
 				}
 			})
 		);
