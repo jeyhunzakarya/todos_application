@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, useSearchParams,  useParams } from "react-router-dom";
-import UsersScreen from './components/UsersScreen';
-import SingleUserScreen from './components/SingleUserScreen';
-import SingleCardView from './components/SingleCardView';
+import UsersScreen from './UsersScreen';
+import SingleUserScreen from './SingleUserScreen';
+import SingleCardView from './SingleCardView';
 function App (){
     return (
 		<BrowserRouter>
