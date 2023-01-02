@@ -27,6 +27,7 @@ function AddTodo ()  {
 					title,
 					txt:innerTxt,
 					id:currUser.todos.length+1,
+					isPrivate:false
 				}
 			})
 		);
@@ -45,13 +46,13 @@ function AddTodo ()  {
 				onChange={(event) => setTitle(event.target.value)}
 			></input>
 			<textarea 
-			id="text" 
-			name="text" 
-			rows="12" 
-			cols="50"
-			placeholder="content"
-			value={innerTxt}
-			onChange={(event) => setInnerTxt(event.target.value)}
+				id="text" 
+				name="text" 
+				rows="12" 
+				cols="50"
+				placeholder="content"
+				value={innerTxt}
+				onChange={(event) => setInnerTxt(event.target.value)}
 			>
 			</textarea>
 			<button className="task-button" onClick={onSubmit}>

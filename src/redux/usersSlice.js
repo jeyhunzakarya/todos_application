@@ -10,10 +10,11 @@ export const usersSlice = createSlice({
             const newUser = {
                 id: counter++,
                 name: action.payload.user,
-                todos: [{title : "todo1", txt : "aaaaa"}, {title:"doto2", txt : "bbbbbb"}]
+                todos: [{title : "todo1", txt : "aaaaa", isPrivate : false}, {title:"doto2", txt : "bbbbbb", isPrivate:false}]
             }
             return  [...state, newUser]
         },
+
         addTodo: (state, action)=>{
             const todo = action.payload.todo
             const user = action.payload.user
@@ -22,23 +23,33 @@ export const usersSlice = createSlice({
                 else return {...usr,todos: usr.todos.concat(todo)}
             })
         },
+
         deleteTodo: (state, action)=>{
             const todoForDelete = action.payload.todo
             const user = action.payload.user
-            console.log(todoForDelete);
-            console.log(user);
             return state.map(usr=>{
-                console.log(usr);
                 if (usr.id !=user.id) return usr
                 else {
-                    console.log(usr);
-                    console.log(usr.todos.filter(todo=>todo.id!=todoForDelete.id));
                     return {...usr,todos: usr.todos.filter(todo=>todo.id!=todoForDelete.id)}}
+            })
+        },
+
+        toggleVisibility: (state, action)=>{
+            const user = action.payload.user
+            const todoForToggle = action.payload.todo
+            return state.map(usr=>{
+                if (usr.id !=user.id) return usr
+                else {
+                    return {...usr,todos: usr.todos.map(todo=>{
+                        if (todo.id!=todoForToggle.id) return todo
+                        else return {...todo, isPrivate : !todo.isPrivate}
+                    })}
+                }
             })
         }
     }
 });
 
-export const {addUser: addUser, addTodo, deleteTodo} = usersSlice.actions;
+export const {addUser: addUser, addTodo, deleteTodo,toggleVisibility} = usersSlice.actions;
 
 export default usersSlice.reducer;
