@@ -2,6 +2,10 @@ import React,{useState} from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import {useParams } from "react-router-dom";
 import {deleteTodo, toggleVisibility} from "../redux/usersSlice"
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import CardHeader from '@material-ui/core/CardHeader'
+import Typography from "@material-ui/core/Typography";
 
 const TodoItem = ({ todo }) => {
 	let id  = useParams().id;
@@ -31,15 +35,31 @@ const TodoItem = ({ todo }) => {
 	}
 
 	return (
-		<li className="task-item">
-			<h1>
-				{todo.isPrivate? "title hidden" : todo.title}
-			</h1>
-			<div>{todo.isPrivate? "content hidden": todo.txt}</div>
+		<>
+			<Card
+				style={{
+				width: 400,
+				backgroundColor: "white",
+				marginTop: 20,
+				}}
+			>
+
+				<CardHeader
+					component={Typography}
+					title={todo.isPrivate? "title hidden" : todo.title}
+				/>
+		
+				<CardContent>
+					<Typography variant="body2" component="p">
+						{todo.isPrivate? "content hidden": todo.txt}	
+					</Typography>
+				</CardContent>
+		
+			</Card>
 			<button onClick={onDeleteClick}> delete </button>
 			<button onClick={onCopyClick} >copy link</button>
 			<button onClick = {onToggleClick}>toggle visibility</button>
-		</li>
+		</>
 	);
 };
 
