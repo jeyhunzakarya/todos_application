@@ -11,10 +11,10 @@ function SingleCardView() {
     const userName = useParams().userName;
     const todoId = useParams().todoId
     const todos = useSelector((state)=>{
-		return state.users.find(user=>user.name==userName).todos;
+		return state?.users?.find(user=>user.name==userName)?.todos;
 	});
-    const todo = todos.find(todoElem=>todoElem.id == todoId)
-    if (todo.isPrivate) { 
+    const todo = todos?.find(todoElem=>todoElem.id == todoId)
+    if (!todo || todo.isPrivate) { 
         return <h2>todo not found</h2>
     }
     else 
