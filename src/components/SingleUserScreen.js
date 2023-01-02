@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import {  useParams } from "react-router-dom";
 
 function SingleUserScreen() {
-	let id  = useParams();
+	let id  = useParams().id;
 	const currUser = useSelector((state)=>{
 		return state.users.find(user=>user.id==id);
 	});

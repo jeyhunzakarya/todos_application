@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import { useDispatch } from "react-redux";
-import { addTask } from "../redux/usersSlice";
+import { addTodo } from "../redux/usersSlice";
 import {useParams } from "react-router-dom";
 import { useSelector } from 'react-redux';
 function AddTodo ()  {
-	let id  = useParams();
+	let id  = useParams().id;
 	const [title, setTitle] = useState('');
 	const [innerTxt, setInnerTxt] = useState('');
 	const dispatch = useDispatch();
-	const user = useSelector((state)=>{
+	const currUser = useSelector((state)=>{
 		return state.users.find(user=>user.id==id);
 	});
-
 	const onSubmit = (event) => {
 		event.preventDefault();
 
@@ -21,13 +20,13 @@ function AddTodo ()  {
 			setTitle("");
 			return;
 		}
-
 		dispatch(
-			addTask({
-				user:user,
+			addTodo({
+				user:currUser,
 				todo:{
 					title,
-					txt:innerTxt
+					txt:innerTxt,
+					id:currUser.todos.length+1,
 				}
 			})
 		);

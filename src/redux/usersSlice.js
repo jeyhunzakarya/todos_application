@@ -14,17 +14,31 @@ export const usersSlice = createSlice({
             }
             return  [...state, newUser]
         },
-        addTask: (state, action)=>{
+        addTodo: (state, action)=>{
             const todo = action.payload.todo
             const user = action.payload.user
             return state.map(usr=>{
                 if (usr.id !=user.id) return usr
                 else return {...usr,todos: usr.todos.concat(todo)}
             })
+        },
+        deleteTodo: (state, action)=>{
+            const todoForDelete = action.payload.todo
+            const user = action.payload.user
+            console.log(todoForDelete);
+            console.log(user);
+            return state.map(usr=>{
+                console.log(usr);
+                if (usr.id !=user.id) return usr
+                else {
+                    console.log(usr);
+                    console.log(usr.todos.filter(todo=>todo.id!=todoForDelete.id));
+                    return {...usr,todos: usr.todos.filter(todo=>todo.id!=todoForDelete.id)}}
+            })
         }
     }
 });
 
-export const {addUser: addUser, addTask} = usersSlice.actions;
+export const {addUser: addUser, addTodo, deleteTodo} = usersSlice.actions;
 
 export default usersSlice.reducer;
