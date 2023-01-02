@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from "react-redux";
 import { useNavigate} from "react-router-dom";
+import "../css/button.css";
 
 function ContinueBtn() {
     const selectedUsr = useSelector((state)=>{
@@ -12,7 +13,7 @@ function ContinueBtn() {
     }
     
     return (
-        <button onClick={onClickHandler}>Continue</button>
+        <button className="continue-button" onClick={onClickHandler}>Continue</button>
     )
 }
 

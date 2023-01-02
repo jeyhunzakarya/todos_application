@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { addTodo } from "../redux/usersSlice";
 import {useParams } from "react-router-dom";
 import { useSelector } from 'react-redux';
+import "../css/button.css";
+
 function AddTodo ()  {
 	let id  = useParams().id;
 	const [title, setTitle] = useState('');
@@ -16,7 +18,7 @@ function AddTodo ()  {
 
 		if(title.trim().length === 0)
 		{
-			alert("please add nonempty task");
+			alert("please add nonempty todo");
 			setTitle("");
 			return;
 		}
@@ -55,7 +57,7 @@ function AddTodo ()  {
 				onChange={(event) => setInnerTxt(event.target.value)}
 			>
 			</textarea>
-			<button className="task-button" onClick={onSubmit}>
+			<button className="modal-button" onClick={onSubmit}>
 				Save
 			</button>
 		</div>

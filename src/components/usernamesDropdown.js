@@ -6,7 +6,6 @@ import 'react-dropdown/style.css';
 import { useDispatch } from "react-redux";
 import {selectUser} from "../redux/selectedUserSlice"
 
-
 const UsernamesDropdown = () => {
 	const users = useSelector((state)=>{
 		return state.users
@@ -29,7 +28,7 @@ const UsernamesDropdown = () => {
 			}
 		});
 	});
-	return 	<Dropdown options={usersDropdown} onChange = {onUserClick} placeholder="Select an option" />;
+	return 	<Dropdown options={usersDropdown} onChange = {onUserClick} placeholder="Select user" />;
 };
 
 export default UsernamesDropdown;

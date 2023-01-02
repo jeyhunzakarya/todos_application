@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from "react-redux";
 import { addUser } from "../redux/usersSlice";
+import "../css/button.css";
+import "../css/input.css";
 
 function AddUser (){
 	const [value, setValue] = useState('');
@@ -27,13 +29,13 @@ function AddUser (){
 		<div className="addUser">
 			<input
 				type="text"
-				className="task-input"
-				placeholder="Add task"
+				className="user-input"
+				placeholder="Add User"
 				value={value}
 				onChange={(event) => setValue(event.target.value)}
 			></input>
 
-			<button className="task-button" onClick={onSubmit}>
+			<button className="user-button" onClick={onSubmit}>
 				Save
 			</button>
 		</div>
